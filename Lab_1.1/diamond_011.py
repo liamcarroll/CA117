@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
-def diamond(middle_asterisks):
-   i = 0
-   while i < n - 1:
-      print((' ' * n - i - 1) + ('*' * i + 1), end='')
+def diamond(size):
+   
 
 def main():
    n = int(sys.argv[1])
