@@ -20,9 +20,8 @@ def main():
    
    for line in table:
       tokens = line.split()
-      print(tokens)
-      club_name = tokens[1:-8]
-      print('{:>3d} {:<{}} {:>2d} {:>3d} {:>3d} {:>3d} {:>3d} {:>3d} {:>3d} {:>3d}'.format(tokens[0], club_name, club_width, tokens[-8], tokens[-7], tokens[-6], tokens[-5], tokens[-4], tokens[-3], tokens[-2], tokens[-1]))
+      club_name = ' '.join(tokens[1:-8])
+      print('{:>3} {:<{}} {:>2} {:>3} {:>3} {:>3} {:>3} {:>3} {:>3} {:>3}'.format(tokens[0], club_name, club_width, tokens[-8], tokens[-7], tokens[-6], tokens[-5], tokens[-4], tokens[-3], tokens[-2], tokens[-1]))
 
 if __name__ == '__main__':
    main()
