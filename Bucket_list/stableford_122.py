@@ -5,6 +5,7 @@ import sys
 lines = []
 par = {}
 index = {}
+totals = {}
 
 score_to_par = {-7: 9,
                 -6: 8,
@@ -16,20 +17,24 @@ score_to_par = {-7: 9,
                 0: 2,
                 1: 1}
 
-def score(line):
-    shots = {}
-    handicap = int(line.split()[-19])
-    i = 0
-    while i < handicap:
-        if 18 < i:
-            i = i -18
-            shots[index[i]] += 1
-            print(shots)
+
+def stableford_points(scores, handicap):
+    points = 0
+    for i in range(18):
+        if scores[i] == 'X':
+            pass
+        elif not scores[i].isdigit() and scores[i] != 'X':
+            return 'Disqualified'
         else:
-            shots[index[i]] += 1
-            print(shots)
-        i += 1
-    return shots
+            free_shots = 0
+            i = 
+            net_strokes = (par[i] + free_shots) - int(scores[i])
+            if 1 < net_strokes:
+                net_strokes = 1
+            elif net_strokes < -7:
+                net_strokes = -7
+            points += score_to_par[net_strokes]
+    return points
 
 
 def main():
@@ -37,10 +42,15 @@ def main():
         lines.append(line.strip())
     for i in range(18):
         par[i] = int(lines[0].split()[i])
-        index[int(lines[1].split()[i])] = i
-    print(index)
-    print(score(lines[2]))
-    
+        index[i] = int(lines[1].split()[i])
+    for line in lines[2:]:
+        name = ' '.join(line.split()[:-19])
+        handicap = int(line.split()[-19])
+        scores = line.split()[-18:]
+        totals[name] = stableford_points(scores, handicap)
+    print(totals)
+        
+
 
 if __name__ == '__main__':
     main()
