@@ -27,13 +27,17 @@ def stableford_points(scores, handicap):
             return 'Disqualified'
         else:
             free_shots = 0
-            i = 
-            net_strokes = (par[i] + free_shots) - int(scores[i])
-            if 1 < net_strokes:
-                net_strokes = 1
-            elif net_strokes < -7:
-                net_strokes = -7
-            points += score_to_par[net_strokes]
+            hcap = handicap
+            while index[i] <= hcap:
+                free_shots += 1
+                hcap = hcap - 18
+            net_strokes = int(scores[i]) - free_shots
+            par_score = par[i] - net_strokes
+            if 1 < par_score:
+                par_score = 1
+            if par_score < -7:
+                par_score = -7
+            points += score_to_par[par_score]
     return points
 
 
