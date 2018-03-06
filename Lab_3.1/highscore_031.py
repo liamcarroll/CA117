@@ -14,8 +14,7 @@ def highscore(a, b, c, d):
         b_incremented = score(a, b + 1, c)
         print('b_incremented =' + str(b_incremented))
         c_incremented = score(a, b, c + 1)
-        print('c_incremented =' + str(c_incremented))
-
+        print('c_incremented =' + str(c_incremented)
         if max(a_incremented, b_incremented, c_incremented) == a_incremented:
             a += 1
             print('a = ' + str(a))
