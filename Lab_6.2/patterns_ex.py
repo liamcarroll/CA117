@@ -1,13 +1,14 @@
 from re import findall
 import sys
 
-from patterns_062 import date
+from patterns_062 import date, phone
 
 
 def main():
 
     # Verify regular expressions are not overly long
     assert(len(date) < 30)
+    assert(len(phone) < 30)
 
     s = sys.stdin.read()
 
