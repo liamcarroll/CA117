@@ -1,7 +1,7 @@
 from re import findall
 import sys
 
-from patterns_062 import date, phone
+from patterns_062 import date, phone, email, ldate
 
 
 def main():
@@ -9,6 +9,8 @@ def main():
     # Verify regular expressions are not overly long
     assert(len(date) < 30)
     assert(len(phone) < 30)
+    assert(len(email) < 40)
+    assert(len(ldate) < 80)
 
     s = sys.stdin.read()
 
