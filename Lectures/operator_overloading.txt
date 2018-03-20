@@ -1,0 +1,28 @@
+For USER DEFINED classes the equality operator (double equals), checks whether one object IS another
+i.e. t1 == t2 is the same as t1 is t2
+
+To change this, we need to overload the operator '==' (called operator overloading/polymorphism)
+Therefore the behaviour of the double equals depends on its context
+It will only operate like this when the operands are both instances of the class for which the operator has been changed
+
+We write an instance method in our class to change this:
+    def __eq__(self, other):
+        return (self.hour, self.minute, self.second == other.hour, other.minute, other.second)
+
+Are the tuples of all of the values of the instance the same?
+This also overides the inequality operator ('!=')
+
+
+We can use the technique of operator overiding in a similiar way to overide the '+' operator:
+    def __add__(self, other):
+        return seconds_to_time(#add the seconds of each time)
+
+There are instance methods for more of the operators also:
+    def __gt__(self, other): #The greater than operator ('>')
+        #self > other
+
+You can also overload the increment and add operator '+='
+    def __iadd__(self, other):
+        z = self + other
+        self.hour, self.minute, self.second = z.hour, z.minute, z.second
+        return self
