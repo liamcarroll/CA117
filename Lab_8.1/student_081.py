@@ -45,10 +45,39 @@ class Student(object):
     def add_mark(self, module, mark):
         self.__marks[module] = mark
 
-    def precision_mark():
+    def precision_mark(self):
+        total = 0
+        self.__ten_creds = ['CA116', 'CA117', 'MS121']
+        for k, v in self.__marks.items():
+            if k in self.__ten_creds:
+                weight = 1 / 6
+                grade = v / 100
+                weighted_mark = grade * weight
+                total += weighted_mark
+            else:
+                weight = 1 / 12
+                grade = v / 100
+                weighted_mark = grade * weight
+                total += weighted_mark
+        precision_mark = total * 100
+        return precision_mark
 
-    def passed():
-        pass
+    def passed(self):
+        self.__failed_mods = []
+        self.__failed_creds = 0
+        for k, v in self.__marks.items():
+            if v < 40:
+                if k in self.__ten_creds:
+                    self.__failed_creds += 10
+                else:
+                    self.__failed_creds += 5
+                self.__failed_mods.append(k)
+                return False
+        return True
 
-    def passed_by_compensation():
-        pass
+    def passed_by_compensation(self):
+        for mod in self.__failed_mods:
+            if self.__marks[mod] < 35:
+                return False
+        if self.precision_mark() >= 45 and self.__failed_creds / 60 <= 1 / 6:
+            return True
