@@ -26,5 +26,26 @@ def main():
     print(t4 > t1)
     print(t4 < t1)
 
+    # Check addition
+    print('Checking addition...')
+    t5 = t2 + t2 + t2
+    print(t5)
+    print(t5 > t2)
+
+    # Check increment
+    print('Checking increment...')
+    t33 = t2
+    t2 += t2
+    t2 += t4
+    print(t2)
+    print(t33 is t2)
+    print(t2 > t3)
+
+    # Check class method
+    print('Checking class method...')
+    t6 = Time.seconds_to_time(123456)
+    print(t6)
+    print(t6 > t1)
+
 if __name__ == '__main__':
     main()

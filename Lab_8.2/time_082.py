@@ -15,7 +15,16 @@ class Time(object):
         return ((self.hour, self.minute, self.second) == (other.hour, other.minute, other.second))
 
     def __gt__(self, other):
-        return (self.hour, self.minute, self.second) > (other.hour, other.minute, other.second)
+        return self.time_to_seconds() > other.time_to_seconds()
+
+    def __add__(self, other):
+        total_seconds = self.time_to_seconds() + other.time_to_seconds()
+        return self.seconds_to_time(total_seconds)
+
+    def __iadd__(self, other):
+        z = self + other
+        self.hour, self.minute, self.second = z.hour, z.minute, z.second
+        return self
 
     def time_to_seconds(self):
         return self.hour * 60 * 60 + self.minute * 60 + self.second
