@@ -1,0 +1,44 @@
+Variable that are stored in a class but are not attached to any particular instance are class variables.
+Instance variables are variables attached to a particular instance, also called data attributes.
+There are two options for accessing a class variable, you can go through the instance or you can go through the class.
+i.e self.weight or Person.weight
+
+Inheritance involves puttting everything in common between classes into one class and then putting their different aspects into their own seperate classes.
+
+The class where things in common between objects are put is called a base class or super class.
+We derive our sub-classes or child classes from this base class.
+
+Now our sub-classes inherit from the super class.
+i.e class Car(Vehicle):
+        ....
+
+    class Van(Vehicle):
+        ....
+
+The Car and Van classes are sub-classes of the Vehicle super class.
+These classes can use all of the instance methods etc in the super class.
+
+Inheritance can be modelled on an inheritance tree.
+
+class Goods(Vehicle):
+    d_rate = -0.2
+
+class Truck(Goods):
+    srv__miles = 20000
+
+class Van(Goods):
+    srv_miles = 15000
+
+If you have a sub-class that needs to add (an) extra attribute(s) to the attributes of the parent class, we must initialise the extra attribute(s) in the required sub-class and leave the initialisation of the other attributes to the parent class.
+How we do this is as follows:
+
+def Truck(Goods):
+    
+    service_miles = 20000
+
+    def __init__(self, make, model, year, cost, miles, driver, mechanic):
+        super().__init__(make, model, year, cost, miles, driver) 
+        #Search up the tree to the super-class and initialise the supplied attributes.
+        self.mechanic = mechanic
+
+The super() method is also useful in the __str__ method: simply use the str method from super() and append any extra attribute(s).
