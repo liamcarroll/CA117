@@ -28,10 +28,13 @@ uniops = {'n': negate, 'r': sqrt}
 
 def calculator(line):
     stack = Stack()
-    for e in line():
-        if e in binops:
-            stack.push(binops[e](stack.pop(), stack.pop()))
-        elif e in uniops:
-            stack.push(uniops[e](stack.pop())
+    for e in line.split():
+        if e in binops.keys():
+            y = stack.pop()
+            x = stack.pop()
+            stack.push(binops[e](x, y))
+        elif e in uniops.keys():
+            stack.push(uniops[e](stack.pop()))
         else:
             stack.push(float(e))
+    return stack.top()
